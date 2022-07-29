@@ -1,0 +1,9 @@
+__pychache__
+*.log
+*.dat
+*.pyc
+/venv
+*.html
+*.xml
+*.css
+
