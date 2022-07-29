@@ -2,8 +2,9 @@ from API.Contracts.PublicAPIEntries_Response import PublicAPIEntriesResponse
 from CustomTools.UniversalLogger import logger
 
 
-class PublicApiEntries_Calls:
-    def basic_call(self, session, base_url):
+class PublicApiEntriesCalls:
+    @staticmethod
+    def basic_call(session, base_url):
         logger.info("PublicAPIEntries_Calls.basic_call()")
         url = base_url + "/entries"
 

@@ -3,7 +3,8 @@ import os
 
 
 class Config:
-    def get_url(self, product, environment):
+    @staticmethod
+    def get_url(product, environment):
         try:
             cwd = os.getcwd().split("API")
         except Exception as e:
@@ -26,7 +27,8 @@ class Config:
         else:
             return environment_urls[environment][product]
 
-    def get_username(self, product, environment):
+    @staticmethod
+    def get_username(product, environment):
         try:
             cwd = os.getcwd().split("API")
         except Exception as e:
@@ -49,7 +51,8 @@ class Config:
         else:
             return usernames[environment][product]
 
-    def get_password(self, product, environment):
+    @staticmethod
+    def get_password(product, environment):
         try:
             cwd = os.getcwd().split("API")
         except Exception as e:
@@ -71,4 +74,3 @@ class Config:
             assert False, f"Config.get_url() - environment: {environment} product: {product} is not defined"
         else:
             return passwords[environment][product]
-

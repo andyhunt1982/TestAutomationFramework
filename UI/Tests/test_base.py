@@ -1,5 +1,4 @@
 import pytest
-from Config.config import Config
 
 
 @pytest.mark.usefixtures("init_driver")

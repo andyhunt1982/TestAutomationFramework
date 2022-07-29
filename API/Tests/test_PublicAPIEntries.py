@@ -2,15 +2,15 @@ import requests
 import pytest
 from Config.config import Config
 from API.Tests.test_ConfigStartUp import ENVIRONMENT, PRODUCT
-from API.Calls.PublicAPIEntries_Calls import PublicApiEntries_Calls
+from API.Calls.PublicAPIEntries_Calls import PublicApiEntriesCalls
 
 
-class Test_PublicAPIEntries():
+class TestPublicAPIEntries:
     ENVIRONMENT = ENVIRONMENT
     cookies = None
     base_url = None
     session = None
-    public_api_entries_calls = PublicApiEntries_Calls()
+    public_api_entries_calls = PublicApiEntriesCalls()
 
     @pytest.fixture(scope="function", autouse=True)
     def setup_class(self):

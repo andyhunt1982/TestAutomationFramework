@@ -20,16 +20,15 @@ def pytest_configure(config):
 @pytest.fixture(params=["chrome", "edge"], scope="class")
 def init_driver(request):
     ######################### AMEND THIS VALUE TO RUN IN HEADLESS MODE #########################
-    HEADLESS = True
+    headless = True
     ######################### AMEND THIS VALUE TO RUN IN HEADLESS MODE #########################
 
     if request.param == "chrome":
         chrome_options = webdriver.ChromeOptions()
-        if HEADLESS:
+        if headless:
             chrome_options.headless = True
             chrome_options.add_argument("window-size=3840,2160")
             chrome_options.add_argument("ignore-certificate-errors")
-
         else:
             chrome_options.add_argument("window-size=1920,1080")
         web_driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
@@ -37,7 +36,7 @@ def init_driver(request):
     if request.param == "edge":
         edge_options = EdgeOptions()
         edge_options.use_chromium = True
-        if HEADLESS:
+        if headless:
             edge_options.headless = True
             edge_options.add_argument("disable-gpu")
             edge_options.add_argument("window-size=3840,2160")
@@ -48,7 +47,7 @@ def init_driver(request):
 
     if request.param == "firefox":
         firefox_options = webdriver.FirefoxOptions()
-        if HEADLESS:
+        if headless:
             firefox_options.headless = True
             firefox_options.add_argument("window-size=3840,2160")
             firefox_options.add_argument("ignore-certificate-errors")
