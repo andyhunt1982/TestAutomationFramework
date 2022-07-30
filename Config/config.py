@@ -1,10 +1,36 @@
 from openpyxl import load_workbook
 import os
 
+environment_data = {
+    "test": {
+        "UI": {
+            "url": "https://testui.com",
+            "username": "testuiuser",
+            "password": "testuipassword"
+        },
+        "API": {
+            "url": "https://testapi.com",
+            "username": "testapiuser",
+            "password": "testapipassword"
+        }
+    },
+    "prod": {
+        "UI": {
+            "url": "https://produi.com",
+            "username": "produiuser",
+            "password": "produipassword"
+        },
+        "API": {
+            "url": "https://prodapi.com",
+            "username": "prodapiuser",
+            "password": "prodapipassword"
+        }
+    }
+}
 
 class Config:
     @staticmethod
-    def get_item_from_file(product, environment, item):
+    def get_item_from_file(environment, product, item):
         if item == "url":
             file_name = "Environments.xlsx"
             sheet_name = "Sheet1"
@@ -38,3 +64,14 @@ class Config:
             assert False, f"environment: {environment} product: {product} is not defined for {item}"
         else:
             return items[environment][product]
+
+    @staticmethod
+    def get_item_from_environment_data(environment, product, item):
+        if item == "url":
+            return environment_data[environment][product]["url"]
+        elif item == "username":
+            return environment_data[environment][product]["username"]
+        elif item == "password":
+            return environment_data[environment][product]["password"]
+        else:
+            raise Exception("Invalid item")
