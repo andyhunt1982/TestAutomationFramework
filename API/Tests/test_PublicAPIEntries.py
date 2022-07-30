@@ -18,7 +18,7 @@ class TestPublicAPIEntries:
             'Content-Type': 'application/json'
         }
 
-        self.base_url = Config().get_url(environment=self.ENVIRONMENT, product=PRODUCT)
+        self.base_url = Config().get_item_from_file(environment=self.ENVIRONMENT, product=PRODUCT, item="url")
         self.session = requests.Session()
         self.session.headers.update(headers)
 
