@@ -20,7 +20,7 @@ def pytest_configure(config):
 @pytest.fixture(params=["chrome", "edge"], scope="class")
 def init_driver(request):
     ######################### AMEND THIS VALUE TO RUN IN HEADLESS MODE #########################
-    headless = True
+    headless = False
     ######################### AMEND THIS VALUE TO RUN IN HEADLESS MODE #########################
 
     if request.param == "chrome":

@@ -28,6 +28,7 @@ environment_data = {
     }
 }
 
+
 class Config:
     @staticmethod
     def get_item_from_file(environment, product, item):
