@@ -12,7 +12,6 @@ class TestSandbox(BaseTest):
 
         self.driver.get(url)
 
-
     @pytest.mark.happy_path
     def test_happy_path(self):
         username = Config.get_item_from_environment_data(ENVIRONMENT, PRODUCT, "username")
