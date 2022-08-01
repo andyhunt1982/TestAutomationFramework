@@ -4,9 +4,9 @@ import os
 environment_data = {
     "test": {
         "UI": {
-            "url": "https://testui.com",
-            "username": "testuiuser",
-            "password": "testuipassword"
+            "url": "https://www.saucedemo.com",
+            "username": "standard_user",
+            "password": "secret_sauce"
         },
         "API": {
             "url": "https://testapi.com",
