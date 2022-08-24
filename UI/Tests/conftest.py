@@ -12,18 +12,45 @@ from msedge.selenium_tools import EdgeOptions
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
-    if not os.path.exists('reports'):
-        os.makedirs('reports')
-    config.option.htmlpath = f"reports/{datetime.now().strftime('%d-%m-%Y %H-%M-%S')}.html"
+    cwd = os.getcwd().split("UI")
+    if not os.path.exists(f"{cwd[0]}/Reports"):
+        os.makedirs(f"{cwd[0]}/Reports")
+    config.option.htmlpath = f"{cwd[0]}/Reports/UI - {datetime.now().strftime('%d-%m-%Y %H-%M-%S')}.html"
 
 
-@pytest.fixture(params=["chrome", "edge"], scope="class")
+def pytest_addoption(parser):
+    parser.addoption("--browser", action="store", default="chrome", help="Type in browser name")
+    parser.addoption("--environment", action="store", default="local", help="Type in environment name")
+    parser.addoption("--headless", action="store_true", help="Run in headless mode")
+
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_configure(config):
+
+    config.option.driver = config.getoption("--browser")
+
+    config.option.env = config.getoption("--environment")
+
+    if config.getoption("--headless"):
+        config.option.headless = True
+    else:
+        config.option.headless = False
+
+    global ENV
+    ENV = config.option.env
+    global BROWSER
+    BROWSER = config.option.driver
+    global HEADLESS
+    HEADLESS = config.option.headless
+
+
+@pytest.fixture(scope="class")
 def init_driver(request):
-    ######################### AMEND THIS VALUE TO RUN IN HEADLESS MODE #########################
-    headless = False
-    ######################### AMEND THIS VALUE TO RUN IN HEADLESS MODE #########################
+    browser = request.config.getoption("--browser")
+    environment = request.config.getoption("--environment")
+    headless = request.config.getoption("--headless")
 
-    if request.param == "chrome":
+    if browser == "chrome":
         chrome_options = webdriver.ChromeOptions()
         if headless:
             chrome_options.headless = True
@@ -33,7 +60,7 @@ def init_driver(request):
             chrome_options.add_argument("window-size=1920,1080")
         web_driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
 
-    if request.param == "edge":
+    if browser == "edge":
         edge_options = EdgeOptions()
         edge_options.use_chromium = True
         if headless:
@@ -45,7 +72,7 @@ def init_driver(request):
             edge_options.add_argument("window-size=1920,1080")
         web_driver = Edge(EdgeChromiumDriverManager().install(), options=edge_options)
 
-    if request.param == "firefox":
+    if browser == "firefox":
         firefox_options = webdriver.FirefoxOptions()
         if headless:
             firefox_options.headless = True

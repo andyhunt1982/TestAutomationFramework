@@ -1,12 +1,10 @@
 import requests
 import pytest
 from Config.config import Config
-from API.Tests.test_ConfigStartUp import ENVIRONMENT, PRODUCT
 from API.Calls.PublicAPIEntries_Calls import PublicApiEntriesCalls
 
 
 class TestPublicAPIEntries:
-    ENVIRONMENT = ENVIRONMENT
     cookies = None
     base_url = None
     session = None
@@ -18,7 +16,7 @@ class TestPublicAPIEntries:
             'Content-Type': 'application/json'
         }
 
-        self.base_url = Config().get_item_from_file(environment=self.ENVIRONMENT, product=PRODUCT, item="url")
+        self.base_url = Config().get_item_from_file(product="API", item="url")
         self.session = requests.Session()
         self.session.headers.update(headers)
 

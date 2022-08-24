@@ -1,5 +1,7 @@
 from openpyxl import load_workbook
 import os
+from API.Tests import conftest as API_conftest
+from UI.Tests import conftest as UI_conftest
 
 environment_data = {
     "test": {
@@ -28,10 +30,15 @@ environment_data = {
     }
 }
 
+try:
+    environment = API_conftest.ENV
+except AttributeError:
+    environment = UI_conftest.ENV
+
 
 class Config:
     @staticmethod
-    def get_item_from_file(environment, product, item):
+    def get_item_from_file(product, item):
         if item == "url":
             file_name = "Environments.xlsx"
             sheet_name = "Sheet1"
@@ -67,7 +74,7 @@ class Config:
             return items[environment][product]
 
     @staticmethod
-    def get_item_from_environment_data(environment, product, item):
+    def get_item_from_environment_data(product, item):
         if item == "url":
             return environment_data[environment][product]["url"]
         elif item == "username":
