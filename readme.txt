@@ -7,8 +7,8 @@ docs.pytest.org                     PyTest documentation
 
 DOCUMENT REQUIRED DEPENDENCIES
 ==============================================================================
-pip freeze > requirements.txt       list installed packages
-pip install -r requirements.txt     install requirements
+pip freeze > requirements.txt       create requirements.txt file for project dependencies
+pip install -r requirements.txt     install project dependencies from requirements.txt file
 
 PYTEST VIA COMMAND LINE
 ==============================================================================
