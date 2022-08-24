@@ -19,19 +19,7 @@ def pytest_addoption(parser):
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
-
-    config.option.driver = config.getoption("--browser")
-
     config.option.env = config.getoption("--environment")
-
-    if config.getoption("--headless"):
-        config.option.headless = True
-    else:
-        config.option.headless = False
 
     global ENV
     ENV = config.option.env
-    global BROWSER
-    BROWSER = config.option.driver
-    global HEADLESS
-    HEADLESS = config.option.headless

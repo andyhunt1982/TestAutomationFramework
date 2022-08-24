@@ -18,7 +18,7 @@ environment_data = {
     },
     "prod": {
         "UI": {
-            "url": "https://produi.com",
+            "url": "https://google.com",
             "username": "produiuser",
             "password": "produipassword"
         },

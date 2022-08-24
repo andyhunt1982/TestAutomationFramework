@@ -11,7 +11,7 @@ class TestPublicAPIEntries:
     public_api_entries_calls = PublicApiEntriesCalls()
 
     @pytest.fixture(scope="function", autouse=True)
-    def setup_class(self):
+    def setup(self):
         headers = {
             'Content-Type': 'application/json'
         }

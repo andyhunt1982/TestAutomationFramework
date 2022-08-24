@@ -26,28 +26,16 @@ def pytest_addoption(parser):
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
-
-    config.option.driver = config.getoption("--browser")
-
     config.option.env = config.getoption("--environment")
-
-    if config.getoption("--headless"):
-        config.option.headless = True
-    else:
-        config.option.headless = False
 
     global ENV
     ENV = config.option.env
-    global BROWSER
-    BROWSER = config.option.driver
-    global HEADLESS
-    HEADLESS = config.option.headless
 
 
 @pytest.fixture(scope="class")
 def init_driver(request):
     browser = request.config.getoption("--browser")
-    environment = request.config.getoption("--environment")
+    # environment = request.config.getoption("--environment")
     headless = request.config.getoption("--headless")
 
     if browser == "chrome":
