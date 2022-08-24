@@ -12,7 +12,7 @@ pip install -r requirements.txt     install requirements
 
 PYTEST VIA COMMAND LINE
 ==============================================================================
-pytest -v -n5 test_json_parser.py --html=test_results.html
+pytest -v -n5 --browser=chrome --environment=test --headless test_json_parser.py --html=test_results.html
 
 pytest:                             execution command
 -v:                                 verbose output
@@ -21,8 +21,11 @@ test_json_parser.py:                test file
 --html=test_results.html:           HTML report
 -m "not slow":                      skip slow tests
 -m smoke_tests:                     run tests with smoke_tests tag
--rA:                                run all tests in all files
+-rA:                                report summary on all tests executed
 --markers:                          list all markers
 --disable-warnings:                 disable all warnings
 --collect-only:                     only collect tests
 --self-contained-html:              generate self-contained HTML report
+--browser=chrome:                   browser to use for test run
+--environment=test:                 environment to use for test run
+--headless:                         run tests in headless mode
