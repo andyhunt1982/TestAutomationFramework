@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from UI.PageObjectLibrary.BasePage import BasePage
+from src.UI.PageObjectLibrary.BasePage import BasePage
 
 
 class LoginPage(BasePage):

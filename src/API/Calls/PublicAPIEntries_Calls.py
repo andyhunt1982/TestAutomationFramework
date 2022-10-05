@@ -1,5 +1,5 @@
-from API.Contracts.PublicAPIEntries_Response import PublicAPIEntriesResponse
-from CustomTools.UniversalLogger import logger
+from src.API.Contracts.PublicAPIEntries_Response import PublicAPIEntriesResponse
+from src.CustomTools.UniversalLogger import logger
 
 
 class PublicApiEntriesCalls:

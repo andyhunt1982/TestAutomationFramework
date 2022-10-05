@@ -1,7 +1,7 @@
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from CustomTools.UniversalLogger import logger
+from src.CustomTools.UniversalLogger import logger
 
 
 class BasePage:

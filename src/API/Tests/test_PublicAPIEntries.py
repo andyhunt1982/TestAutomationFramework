@@ -1,7 +1,7 @@
 import requests
 import pytest
-from Config.config import Config
-from API.Calls.PublicAPIEntries_Calls import PublicApiEntriesCalls
+from src.Config.config import Config
+from src.API.Calls.PublicAPIEntries_Calls import PublicApiEntriesCalls
 
 
 class TestPublicAPIEntries:

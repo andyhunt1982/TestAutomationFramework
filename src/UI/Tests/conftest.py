@@ -12,7 +12,7 @@ from msedge.selenium_tools import EdgeOptions
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
-    cwd = os.getcwd().split("UI")
+    cwd = os.getcwd().split("src")
     if not os.path.exists(f"{cwd[0]}/Reports/UI"):
         os.makedirs(f"{cwd[0]}/Reports/UI")
     config.option.htmlpath = f"{cwd[0]}/Reports/UI/UI - {datetime.now().strftime('%d-%m-%Y %H-%M-%S')}.html"

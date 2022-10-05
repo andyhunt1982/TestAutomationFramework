@@ -5,7 +5,7 @@ from datetime import datetime
 
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
-    cwd = os.getcwd().split("API")
+    cwd = os.getcwd().split("src")
     if not os.path.exists(f"{cwd[0]}/Reports/API"):
         os.makedirs(f"{cwd[0]}/Reports/API")
     config.option.htmlpath = f"{cwd[0]}/Reports/API/API - {datetime.now().strftime('%d-%m-%Y %H-%M-%S')}.html"

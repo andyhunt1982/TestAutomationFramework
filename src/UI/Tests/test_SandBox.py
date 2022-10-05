@@ -1,6 +1,6 @@
 import pytest
-from UI.Tests.test_base import BaseTest
-from Config.config import Config
+from src.UI.Tests.test_base import BaseTest
+from src.Config.config import Config
 
 
 class TestSandbox(BaseTest):

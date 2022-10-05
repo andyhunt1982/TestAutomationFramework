@@ -1,7 +1,7 @@
 from openpyxl import load_workbook
 import os
-from API.Tests import conftest as API_conftest
-from UI.Tests import conftest as UI_conftest
+from src.API.Tests import conftest as API_conftest
+from src.UI.Tests import conftest as UI_conftest
 
 environment_data = {
     "test": {
