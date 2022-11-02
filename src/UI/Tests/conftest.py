@@ -67,6 +67,12 @@ def init_driver(request):
             firefox_options.add_argument("window-size=1920,1080")
         web_driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), firefox_options=firefox_options)
 
+    print(f"=========TEST CONFIGURATION=========")
+    print(f"Browser     = {browser}")
+    print(f"Environment = {ENV}")
+    print(f"Headless    = {headless}")
+    print(f"====================================")
+
     request.cls.driver = web_driver
 
     yield
