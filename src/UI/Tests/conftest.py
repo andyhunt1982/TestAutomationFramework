@@ -71,5 +71,9 @@ def init_driver(request):
 
     yield
 
+    # delete geckodriver.log file if it exists
+    if os.path.exists("geckodriver.log"):
+        os.remove("geckodriver.log")
+
     web_driver.close()
     web_driver.quit()
