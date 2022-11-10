@@ -1,10 +1,10 @@
 import pytest
 from src.UI.Tests.test_base import BaseTest
 from src.Config.config import Config
-import pytest_check as check
+import softest
 
 
-class TestSandbox(BaseTest):
+class TestSandbox(BaseTest, softest.TestCase):
     @pytest.fixture(autouse=True)
     def setup(self):
         self.Instantiate_Common_Pages()
@@ -32,9 +32,8 @@ class TestSandbox(BaseTest):
         self.login_page.click_login_button()
         assert self.driver.current_url == "https://www.saucedemo.com/inventory.html"
 
-        check.is_in("stuff", self.driver.current_url)
-        check.is_in("saucedemos", self.driver.current_url)
-        check.is_in("inventory", self.driver.current_url)
+        self.soft_assert(self.assertEqual("stuff", self.driver.current_url))
+        self.assert_all()
 
         assert self.driver.current_url == "https://www.saucedemos.com/inventory.html"
 
