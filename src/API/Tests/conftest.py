@@ -19,4 +19,4 @@ def pytest_configure(config):
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome", help="Type in browser name")
     parser.addoption("--environment", action="store", default="local", help="Type in environment name")
-    parser.addoption("--headless", action="store_true", help="Run in headless mode")
+    parser.addoption("--headless", action="store", default="True", help="Run in headless mode")
